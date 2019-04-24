@@ -5,13 +5,18 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module',
+    project: './tsconfig.json',
+    ecmaFeatures: { "legacyDecorators": true }
   },
   extends: [
     '@nuxtjs',
     "airbnb",
-    "plugin:vue/recommended",
-    'plugin:prettier/recommended'
+    'plugin:nuxt/recommended',
+    'plugin:prettier/recommended',
+    'prettier/vue',
+    'prettier/@typescript-eslint'
   ],
   plugins: [
     'prettier',
@@ -19,8 +24,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'nuxt/no-cjs-in-config': 'off',
-    'no-unused-vars': 'off',
-    'no-unused-expressions': 'off'
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }
