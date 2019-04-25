@@ -1,7 +1,7 @@
-import NuxtConfiguration from '@nuxt/config'
+
 const pkg = require('./package')
 
-const nuxtConfig: NuxtConfiguration = {
+module.exports = {
   srcDir: 'app/',
   mode: 'universal',
 
@@ -39,18 +39,11 @@ const nuxtConfig: NuxtConfiguration = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/sitemap-module
-    // "@nuxtjs/sitemap",
+    '@nuxtjs/pwa'
   ],
   /*
   ** Axios module configuration
   */
-  //  sitemap: {
-  //     path: "/sitemap.xml",
-  //     hostname: envSet.baseUrl,
-  //     generate: true
-  // },
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
@@ -65,7 +58,6 @@ const nuxtConfig: NuxtConfiguration = {
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
-        if (!config.module) return
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -76,4 +68,3 @@ const nuxtConfig: NuxtConfiguration = {
     }
   }
 }
-export default nuxtConfig
